@@ -104,8 +104,11 @@ const result = e.target;
 const source = e.relatedTarget;
 if (result.classList?.contains("result") && source.classList?.contains("source") && source === result.previousElementSibling) {
 const code = source.textContent;
+const type = source.dataset.type;
 result.removeAttribute("role");
-result.textContent = processResult(code, source.dataset.type);
+
+if (type === "html") result.innerHTML = code;
+else if (type === "js") result.textContent = processJavascript(code);
 } // if
 } // resultFocusHandler
 
@@ -121,7 +124,10 @@ switch (e.key) {
 case "Enter": if (e.ctrlKey) {
 e.preventDefault();
 const code = e.target.textContent;
-result.textContent = processResult(code, source.dataset.type);
+const type = source.dataset.type;
+
+if (type === "html") result.innerHTML = code;
+else if (type === "js") result.textContent = processJavascript(code);
 } // if
 } // switch
 
