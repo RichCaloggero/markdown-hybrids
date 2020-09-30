@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Test</title>
+<script src="marked.min.js"></script>
+<script type="module" src="md-render.js"></script>
+</head>
+<body>
+
+<md-render >
+# Some text
+
+This is some normal text.
+
+```html
+<p><a href="#">code for a link</a></p>
+```
+
+```js
+function foo() {return "foo";}
+foo();
+```
+
+
+</md-render>
+
+</body>
+</html>
